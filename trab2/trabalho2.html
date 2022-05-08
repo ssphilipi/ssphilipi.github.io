@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Trabalho 2</title>
+
+        <style type="text/css">
+            .circle {
+                width: 130px;
+                height: 130px;
+                border-radius: 50%;
+                float: left;
+                margin-right: 50px;
+            }
+            
+            .red-circle {
+                background-color: red;
+            }
+            
+            .blue-circle {
+                background-color: blue;
+            }
+            
+            .yellow-circle {
+                background-color: yellow;
+            }
+
+            #firstDiv {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-evenly;
+                padding-bottom: 25px;
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+
+            #secDiv {
+                padding-bottom: 25px;
+                text-align: center;
+                font-size: 24px;
+            }
+
+            #circleDiv {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+
+            button {
+                display: inline-block;
+                font-size: 24px;
+                text-align: center;
+            }
+
+            #buttonRed {
+                color: red;
+            }
+
+            #buttonBlue {
+                color: blue;
+            }
+
+            #buttonYellow {
+                color: yellow;
+            }
+        </style>
+
+        <script type="text/javascript">
+            window.addEventListener('DOMContentLoaded', (event) =>
+            {
+                init();
+            });
+
+            function init(){
+                //criar primeira div
+                var firstDiv = document.createElement('div');
+                firstDiv.setAttribute('id', 'firstDiv');
+                document.getElementsByTagName('body')[0].appendChild(firstDiv);
+
+                //criar segunda div
+                var secDiv = document.createElement('div');
+                secDiv.setAttribute('id', 'secDiv');
+                document.getElementsByTagName('body')[0].appendChild(secDiv);
+
+                //criar div dos circulos
+                var circleDiv = document.createElement('div');
+                circleDiv.setAttribute('id', 'circleDiv');
+                document.getElementsByTagName('body')[0].appendChild(circleDiv);
+
+                //criar botao vermelho
+                var buttonRed = document.createElement('button');
+                buttonRed.setAttribute('id', 'buttonRed');
+                document.getElementById('firstDiv').appendChild(buttonRed);
+                document.getElementById('buttonRed').innerText = 'Criar Circulo Vermelho';
+                document.getElementById('buttonRed').addEventListener('click', createRed);
+
+                //criar botao azul
+                var buttonBlue = document.createElement('button');
+                buttonBlue.setAttribute('id', 'buttonBlue');
+                document.getElementById('firstDiv').appendChild(buttonBlue);
+                document.getElementById('buttonBlue').innerText = 'Criar Circulo Azul';
+                document.getElementById('buttonBlue').addEventListener('click', createBlue);
+
+                //criar botao amarelo
+                var buttonYellow = document.createElement('button');
+                buttonYellow.setAttribute('id', 'buttonYellow');
+                document.getElementById('firstDiv').appendChild(buttonYellow);
+                document.getElementById('buttonYellow').innerText = 'Criar Circulo Amarelo';
+                document.getElementById('buttonYellow').addEventListener('click', createYellow);
+
+                //criar botao de limpeza
+                var clearButton = document.createElement('button');
+                clearButton.setAttribute('id', 'clearButton');
+                document.getElementById('firstDiv').appendChild(clearButton);
+                document.getElementById('clearButton').innerText = 'Deletar todos os Circulos';
+                document.getElementById('clearButton').addEventListener('click', clearAll)
+
+                //criar pequeno texto
+                var texto = document.createTextNode('Clique em um circulo para o apagar.');
+                document.getElementById('secDiv').appendChild(texto);
+            }
+
+            function createRed(){
+                var redCircle = document.createElement('div');
+                redCircle.setAttribute('class', 'circle red-circle');
+                redCircle.setAttribute('id', 'red-circle');
+                document.getElementById('circleDiv').appendChild(redCircle);
+                redCircle.onclick = function(e) { this.parentNode.removeChild(this)};
+            }
+
+            function createBlue(){
+                var blueCircle = document.createElement('div');
+                blueCircle.setAttribute('class', 'circle blue-circle');
+                blueCircle.setAttribute('id', 'blue-circle');
+                document.getElementById('circleDiv').appendChild(blueCircle);
+                blueCircle.onclick = function(e) { this.parentNode.removeChild(this)};
+            }
+
+            function createYellow(){
+                var yellowCircle = document.createElement('div');
+                yellowCircle.setAttribute('class', 'circle yellow-circle');
+                yellowCircle.setAttribute('id', 'yellow-circle');
+                document.getElementById('circleDiv').appendChild(yellowCircle);
+                yellowCircle.onclick = function(e) { this.parentNode.removeChild(this)};
+            }
+
+            function clearAll(){
+                document.getElementById('circleDiv').innerHTML = '';
+            }
+        </script>
+
+    </head>
+
+    <body>
+    </body>
+</html>
